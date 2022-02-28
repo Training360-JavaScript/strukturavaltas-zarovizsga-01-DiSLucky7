@@ -61,7 +61,9 @@ const animals = [{
   }];
 
 const animalFilter = (list = animals, pop, zoo) => {
-    return [];
+  return list.filter(animal => animal.population > pop && animal.zoo <= zoo)
+  .map(animal => animal.common_name)
+  .sort();
 };
 
 if (typeof module !== 'undefined') {
@@ -70,3 +72,11 @@ if (typeof module !== 'undefined') {
         animalFilter,
     };
 }
+
+
+
+
+// A következőképpen kell működnie a függvénynek:
+// - Három paramétert vár: állatok listája, állatkerti populációjuk (azaz számuk) és azon állatkertek száma, ahol élnek.
+// - Azoknak az állatoknak az általános, köznapi nevét kell ábécérendben visszaadni egy tömbben, 
+// amelyek száma a megadott populációnál nagyobb, és éppen annyi vagy kevesebb állatkertben élnek, mint a kapott állatkertek száma.
